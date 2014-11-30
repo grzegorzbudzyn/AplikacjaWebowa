@@ -1,7 +1,7 @@
 ﻿@model AplikacjaWebowa.Models.ManageLoginsViewModel
 @using Microsoft.Owin.Security
 @{
-    ViewBag.Title = "Manage your external logins";
+    ViewBag.Title = "Zarządzaj - Logowanie";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -12,16 +12,16 @@
     if (loginProviders.Count() == 0) {
         <div>
             <p>
-                There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=313242">this article</a>
-                for details on setting up this ASP.NET application to support logging in via external services.
-            </p>
+                Nie ustawiłem innych możliwości zalogowania. Więcej informacji na:
+                <a href="http://go.microsoft.com/fwlink/?LinkId=313242">http://go.microsoft.com/fwlink/?LinkId=313242</a>
+                </p>
         </div>
     }
     else
     {
         if (Model.CurrentLogins.Count > 0)
         {
-            <h4>Registered Logins</h4>
+            <h4>Zarejestruj się za pomocą:</h4>
             <table class="table">
                 <tbody>
                     @foreach (var account in Model.CurrentLogins)
@@ -31,13 +31,13 @@
                             <td>
                                 @if (ViewBag.ShowRemoveButton)
                                 {
-                                    using (Html.BeginForm("RemoveLogin", "Manage"))
+                                    using (Html.BeginForm("Usuń", "Manage"))
                                     {
                                         @Html.AntiForgeryToken()
                                         <div>
                                             @Html.Hidden("loginProvider", account.LoginProvider)
                                             @Html.Hidden("providerKey", account.ProviderKey)
-                                            <input type="submit" class="btn btn-default" value="Remove" title="Remove this @account.LoginProvider login from your account" />
+                                            <input type="submit" class="btn btn-default" value="Usuń" title="Usuń konto @account.LoginProvider z Twojego konta" />
                                         </div>
                                     }
                                 }
@@ -53,14 +53,14 @@
         }
         if (Model.OtherLogins.Count > 0)
         {
-            using (Html.BeginForm("LinkLogin", "Manage"))
+            using (Html.BeginForm("Linki logowania", "Manage"))
             {
                 @Html.AntiForgeryToken()
                 <div id="socialLoginList">
                 <p>
                     @foreach (AuthenticationDescription p in Model.OtherLogins)
                     {
-                        <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
+                        <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Zaloguj się za pomocą @p.Caption account">@p.AuthenticationType</button>
                     }
                 </p>
                 </div>

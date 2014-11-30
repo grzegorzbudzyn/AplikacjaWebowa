@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<AplikacjaWebowa.Models.Kontakty>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista";
 }
 
-<h2>Lista</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Utwórz nowy rekord", "Create")
 </p>
 <table class="table">
     <tr>
