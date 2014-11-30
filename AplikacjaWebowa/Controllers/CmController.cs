@@ -46,7 +46,7 @@ namespace AplikacjaWebowa.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "KontaktyId,Nazwa,Adres,Miasto,Stan,Kod_Kontenera,Email")] Kontakty kontakty)
+        public ActionResult Create([Bind(Include = "KontaktyId,Nazwa,Adres,Miasto,Stan_Kontenera,Nr_Kontenera,Email")] Kontakty kontakty)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace AplikacjaWebowa.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "KontaktyId,Nazwa,Adres,Miasto,Stan,Kod_Kontenera,Email")] Kontakty kontakty)
+        public ActionResult Edit([Bind(Include = "KontaktyId,Nazwa,Adres,Miasto,Stan_Kontenera,Nr_Kontenera,Email")] Kontakty kontakty)
         {
             if (ModelState.IsValid)
             {
